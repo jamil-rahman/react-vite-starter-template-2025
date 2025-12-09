@@ -1,1 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  /* Brand Colors - Based on Logo Blue #0D77CD */
+  --color-primary: #E8F4FF; /* Light Blue (background) */
+  --color-secondary: #0D77CD; /* Logo Blue (main brand color) */
+  --color-tertiary: #0A5FA3; /* Darker Blue (hover states) */
+  --color-support: #5CA3E0; /* Medium Blue (accents) */
+  --color-neutral: #2C3E50; /* Dark Slate (text) */
+  
+  /* Tailwind color utilities */
+  --color-light-blue: #E8F4FF;
+  --color-logo-blue: #0D77CD;
+  --color-dark-blue: #0A5FA3;
+  --color-medium-blue: #5CA3E0;
+  --color-slate: #2C3E50;
+  
+  /* Typography */
+  --font-heading: 'Poppins', 'Quicksand', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  /* Spacing - Generous vertical rhythm */
+  --spacing-section: 4rem;
+  
+  /* Focus states for accessibility */
+  --focus-ring: 0 0 0 3px rgba(13, 119, 205, 0.3);
+}
+
+/* Responsive theme overrides must live outside of @theme */
+@media (min-width: 768px) {
+  :root {
+    --spacing-section: 6rem;
+  }
+}
+/* .container {color: #fffbea;
+} */
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-neutral);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--color-neutral);
+  outline-offset: 2px;
+}
+
+/* Skip to content link - visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-neutral);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Utility classes for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .motion-safe {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Floating animation for subtle hero effects */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
